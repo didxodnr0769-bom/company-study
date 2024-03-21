@@ -2,5 +2,6 @@
 **/myvenv/
 **/Lib/
 **/Scripts/
+**/.firebase/
 pyvenv.cfg
 *.ignore.*
