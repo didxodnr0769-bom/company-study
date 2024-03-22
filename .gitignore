@@ -5,3 +5,5 @@
 **/.firebase/
 pyvenv.cfg
 *.ignore.*
+
+**/01_api_server/food
