@@ -1,7 +1,7 @@
 # scrap을 위한 함수들을 정의한 파일입니다.
 import requests
 from bs4 import BeautifulSoup
-
+from datetime import datetime
 
 DATA = []
 
@@ -36,9 +36,21 @@ def request_html(url):
                 "post_url" : post_url
             })
 
-        print(result)
-        DATA = result
 
+        
+        
+        # 이전 저장 데이터와 비교하여 분기처리
+        # 1. 이전 데이터와 다른 경우
+        #  - 데이터 저장
+        #  - push 요청
+        if(DATA != result) : 
+            DATA = result
+            print("time : " , datetime.now() )
+            print("DATA : " , DATA)
+            print("result : " , result)
+            print("DATA == result" , DATA==result)
+            print("----------------------------------------------")
+            
     else : 
         print(response.status_code)
 

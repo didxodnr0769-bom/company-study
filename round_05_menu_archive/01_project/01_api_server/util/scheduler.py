@@ -20,7 +20,7 @@ def run_scheduler():
 
 
 
-# # 스케줄러를 실행할 스레드 생성 및 시작
+# 스케줄러를 실행할 스레드 생성 및 시작
 thread = threading.Thread(target=run_scheduler)
 thread.start()
 
