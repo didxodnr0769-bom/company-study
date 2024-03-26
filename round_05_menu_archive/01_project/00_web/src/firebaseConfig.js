@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/messaging";
 import { vapidKey } from "./constant.ignore";
+import { createRegistToken } from "./system/api";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC96D7QQjowu_2LkEcJ0Ad-wfC87BRRkDo",
@@ -44,6 +45,7 @@ export function requestPermission() {
         .getToken({ vapidKey })
         .then((token) => {
           console.log(`푸시 토큰 발급 완료 : ${token}`);
+          createRegistToken(token);
           messaging.onMessage((payload) => {
             console.log("푸시 알림 수신 - 포그라운드", payload);
           });

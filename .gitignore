@@ -3,6 +3,7 @@
 **/Lib/
 **/Scripts/
 **/.firebase/
+**/node_modules/
 pyvenv.cfg
 *.ignore.*
 

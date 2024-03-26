@@ -8,9 +8,10 @@ import { getMenuList } from "../system/api";
 const ContentsContainer = () => {
   const [contents, setContents] = useState([]);
   useEffect(() => {
-    getMenuList().then((res) => {
-      setContents(res.result.menu_list || []);
-    });
+    // 현재 리스트 API 미구현
+    // getMenuList().then((res) => {
+    //   setContents(res.result.menu_list || []);
+    // });
   }, []);
 
   return (

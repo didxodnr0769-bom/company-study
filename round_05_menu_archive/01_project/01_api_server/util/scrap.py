@@ -3,12 +3,10 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-DATA = []
 
 
 
 def request_html(url):
-    global DATA
     response = requests.get(url)
     if response.status_code == 200:
         html = response.text
@@ -35,25 +33,8 @@ def request_html(url):
                 "menus" : menus,
                 "post_url" : post_url
             })
-
-
-        
-        
-        # 이전 저장 데이터와 비교하여 분기처리
-        # 1. 이전 데이터와 다른 경우
-        #  - 데이터 저장
-        #  - push 요청
-        if(DATA != result) : 
-            DATA = result
-            print("time : " , datetime.now() )
-            print("DATA : " , DATA)
-            print("result : " , result)
-            print("DATA == result" , DATA==result)
-            print("----------------------------------------------")
+        return result
             
     else : 
         print(response.status_code)
-
-def get_scrap_data(): 
-    return DATA
 
