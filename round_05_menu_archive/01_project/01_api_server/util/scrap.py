@@ -10,9 +10,12 @@ def request_html(url):
     response = requests.get(url)
     if response.status_code == 200:
         html = response.text
+        print("soup", html)
         soup = BeautifulSoup(html, 'html.parser')
         container = soup.select_one('#mArticle > div')
+        print("container", container)
         posts = container.select('div.wrap_post')
+        print(posts)
 
         result = []
 

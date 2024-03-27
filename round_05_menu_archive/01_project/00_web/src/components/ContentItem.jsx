@@ -14,10 +14,10 @@ const ContentItem = (props) => {
   return (
     <div className="content-item-container">
       {/* 제목 ( 내용 ) */}
-      <h2>{title}</h2>
+      <h3>{title}</h3>
+      <a href={post_url}>원문 게시물로 이동하기</a>
       {/* OCR 텍스트 추출 결과 */}
       <div className="text-extraction">
-        <a href={post_url}>원문 게시물로 이동하기</a>
         <p>{menus}</p>
       </div>
     </div>

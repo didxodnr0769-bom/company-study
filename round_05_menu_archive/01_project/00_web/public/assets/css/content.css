@@ -1,7 +1,17 @@
 .content-item-container {
-  padding: 10px;
+  padding: 25px;
+  margin-bottom: 15px;
 }
 
-.text-extraction {
+/* 원문 게시물로 이동 */
+.content-item-container a {
+  color: #ffc1c1;
+  font-size: 14px;
+}
+
+.content-item-container .text-extraction {
+  margin-top: 10px;
   white-space: pre-wrap;
+  text-align: center;
+  font-weight: bold;
 }

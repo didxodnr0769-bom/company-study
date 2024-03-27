@@ -15,17 +15,18 @@ firebase_admin.initialize_app(cred)
 # body: {str} 메시지 내용
 def send_message(users, title, body):
 
+
     if(len(users) == 0):
         print("No users")
         return
-    
+    print("메세지 전송을 요청했습니다.",title,body)    
     message = messaging.MulticastMessage(
         data={'title': title,'body': body},
         tokens=users,
     )
 
     response = messaging.send_multicast(message)
-
+    print('Successfully sent message:', response)
     return response
 
 

@@ -9,9 +9,9 @@ const ContentsContainer = () => {
   const [contents, setContents] = useState([]);
   useEffect(() => {
     // 현재 리스트 API 미구현
-    // getMenuList().then((res) => {
-    //   setContents(res.result.menu_list || []);
-    // });
+    getMenuList().then((res) => {
+      setContents(res.data || []);
+    });
   }, []);
 
   return (

@@ -4,8 +4,12 @@
 const Header = () => {
   return (
     <header>
-      <div>헤더 아이콘</div>
-      <div>카톡채널 이동</div>
+      <div className="logo-container">
+        <img className="logo-icon" src="/icon.png" alt="logo" />
+      </div>
+      <div>
+        <a href="https://pf.kakao.com/_Vcbxgb">카톡채널</a>
+      </div>
     </header>
   );
 };

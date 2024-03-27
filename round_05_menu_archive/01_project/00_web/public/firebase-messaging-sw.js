@@ -29,10 +29,10 @@ const messaging = firebase.messaging(app);
 
 // 백그라운드에서 수신된 푸시 알림 처리
 messaging.onBackgroundMessage((payload) => {
-  const notificationTitle = payload.notification.title;
+  const notificationTitle = payload.data.title;
   const notificationOptions = {
-    body: payload.notification.body,
-    icon: payload.notification.image,
+    body: payload.data.body,
   };
+
   self.registration.showNotification(notificationTitle, notificationOptions);
 });

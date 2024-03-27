@@ -5,12 +5,20 @@ header {
   align-items: center;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 20px);
   height: 40px;
   background-color: #333;
   color: #fff;
   padding: 10px;
   text-align: center;
+}
+
+header .logo-container {
+  display: flex;
+  width: 50px;
+}
+header .logo-container .logo-icon {
+  width: 100%;
 }
 
 .contents-container {
