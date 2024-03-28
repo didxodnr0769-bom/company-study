@@ -2,6 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+from .ocr import request_extract
 
 
 
@@ -10,13 +11,9 @@ def request_html(url):
     response = requests.get(url)
     if response.status_code == 200:
         html = response.text
-        print("soup", html)
         soup = BeautifulSoup(html, 'html.parser')
         container = soup.select_one('#mArticle > div')
-        print("container", container)
         posts = container.select('div.wrap_post')
-        print(posts)
-
         result = []
 
         # 아이템 내용 추출 
@@ -27,13 +24,15 @@ def request_html(url):
             # 해당 원문 게시글 상세 URL
             post_url = post.select_one(".post_profile > .wrap_info > .txt_time > a").get("href")
             # 이미지 경로 a.link_post > div > img
-            img = post.select_one("a.link_post > div > img").get("src")
-            
-            menus = "테스트\n메뉴입니다\n아직 OCR 미구현이라"
+            img = "https:"+post.select_one("a.link_post > div > img").get("src")
+            file_name = content.text.replace(" ","_") +".ignore"+ '.jpeg'
+
+            menus_extract = request_extract(img,file_name)
+
 
             result.append({
                 "title" : content.text,
-                "menus" : menus,
+                "menus" : menus_extract,
                 "post_url" : post_url
             })
         return result

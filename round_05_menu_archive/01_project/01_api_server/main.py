@@ -11,7 +11,6 @@ CORS(app)
 
 # 스크랩 타겟 페이지
 SCRAP_TARGET = "http://127.0.0.1:5500/02_mock_menu_page"
-# SCRAP_TARGET = "https://pf.kakao.com/_Vcbxgb/posts"
 
 # PROXY_URL = "http://localhost:3000"
 PROXY_URL = "https://dont-go-cat-yang.koyeb.app";
@@ -32,7 +31,6 @@ def start_scraping():
      # 데이터가 존재하고, 이전 데이터와 다른 경우에만 데이터 저장 & Push 요청
      if result is not None and DATA != result:
         DATA = result
-        print("변경된 데이터",DATA)
         # proxy 서버에 토큰 리스트 요청
         tokens = requests.get(PROXY_URL+"/token/list").json()
         print("데이터 변경사항이 있습니다 토큰 : ", tokens)
@@ -40,11 +38,12 @@ def start_scraping():
         send_message(tokens, "메뉴 업데이트 알림", "메뉴가 업데이트 되었습니다.")
         # 2. 변경된 데이터 서버 저장 요청 ( To. Expree Server )
         regist_menu(result)
+        
 
 
+# 메뉴 등록 요청 ( to express server )
 def regist_menu(data):
    response = requests.post(PROXY_URL+"/menu/regist", json={ "menu" : data})
-   print("메뉴 등록 결과 : " , response)
 
 
 
