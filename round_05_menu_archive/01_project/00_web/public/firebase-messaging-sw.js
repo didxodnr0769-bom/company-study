@@ -23,6 +23,27 @@ const app = firebase.initializeApp({
   measurementId: "G-VPLF8B9TRW",
 });
 
+self.addEventListener("notificationclick", function (event) {
+  event.notification.close(); // 알림 창을 닫음
+  console.log("알림 클릭, clients :  ", clients);
+
+  event.waitUntil(
+    clients.matchAll({ type: "window" }).then((windowClients) => {
+      // 이미 열린 탭이 있는지 확인
+      for (var i = 0; i < windowClients.length; i++) {
+        var client = windowClients[i];
+        if (client.url === "/" && "focus" in client) {
+          return client.focus(); // 해당 탭으로 포커스 이동
+        }
+      }
+      // 열린 탭이 없다면 새로운 탭에서 애플리케이션 열기
+      if (clients.openWindow) {
+        return clients.openWindow("/");
+      }
+    })
+  );
+});
+
 // // Retrieve an instance of Firebase Messaging so that it can handle background
 // // messages.
 const messaging = firebase.messaging(app);

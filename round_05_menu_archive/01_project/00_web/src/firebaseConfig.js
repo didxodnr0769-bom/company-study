@@ -48,6 +48,7 @@ export function requestPermission() {
           createRegistToken(token);
           messaging.onMessage((payload) => {
             console.log("푸시 알림 수신 - 포그라운드", payload);
+            alert("포그라운드 메시지 수신");
           });
         })
         .catch((err) => {

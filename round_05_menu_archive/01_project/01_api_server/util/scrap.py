@@ -32,7 +32,7 @@ def request_html(url):
 
             result.append({
                 "title" : content.text,
-                "menus" : menus_extract,
+                "menus" : menus_extract.replace(" " , ""),
                 "post_url" : post_url
             })
         return result
